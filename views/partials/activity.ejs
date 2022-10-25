@@ -1,0 +1,53 @@
+<div class="container px-5" style="padding-top: 1rem; padding-bottom: 5rem;">
+
+    <h3 class="fw-bolder">
+        <%= activityTitle %>
+    </h3>
+
+    <form id="activityForm" style="padding-bottom: 5rem;">
+
+        <% for(var i=0; i < questions.length; i++) { %>
+            <div class="card text-white bg-secondary text-justify content-item">
+                <div class="card-body">
+                    <h5>Question
+                        <%= i + 1 %>:
+                    </h5>
+                </div>
+            </div>
+
+            <h6 class="question_number">
+                <%= questions[i].statement %>
+            </h6>
+
+            <input class="radio_padding activity_radio" type="radio" id="<%= questions[i].question_id %>-answer_1_text" name="<%= questions[i].question_id %>" value="1">
+            <label for="1"><%= questions[i].answer_1_text %></label><br>
+
+            <input class="radio_padding activity_radio" type="radio" id="<%= questions[i].question_id %>-answer_2_text" name="<%= questions[i].question_id %>" value="2">
+            <label for="2"><%= questions[i].answer_2_text %></label><br>
+
+            <% if(questions[i].answer_3_text != null){ %>
+              <input class="radio_padding activity_radio" type="radio" id="<%= questions[i].question_id %>-answer_3_text" name="<%= questions[i].question_id %>" value="3">
+              <label for="3"><%= questions[i].answer_3_text %></label><br>
+            <% } %>
+
+            <% if(questions[i].answer_4_text != null){ %>
+              <input class="radio_padding activity_radio" type="radio" id="<%= questions[i].question_id %>-answer_4_text" name="<%= questions[i].question_id %>" value="4">
+              <label for="4"><%= questions[i].answer_4_text %></label><br>
+            <% } %>
+
+            <% if(questions[i].answer_5_text != null){ %>
+              <input class="radio_padding activity_radio" type="radio" id="<%= questions[i].question_id %>-answer_5_text" name="<%= questions[i].question_id %>" value="5">
+              <label for="5"><%= questions[i].answer_5_text %></label><br>
+            <% } %>
+
+            <br>
+            <a href="#!" onclick=uncheckRadioButton("<%= questions[i].question_id %>")>Clear my selection</a>
+
+            <br>
+            <% } %>
+
+    </form>
+
+    <button class="btn btn-primary float-end" id="btnSubmitActivity" style="margin-left: 1rem;" onclick=submitAnswers()>Submit</button>
+
+</div>

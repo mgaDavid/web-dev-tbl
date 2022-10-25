@@ -1,0 +1,97 @@
+<div class="container px-5" style="padding-top: 1rem;">
+
+    <h3 class="fw-bolder">
+        <%= moduleName %>
+    </h3>
+
+    <div class="card text-white bg-secondary text-justify content-item">
+        <div class="card-body">
+            <h5>Activity:
+                <%= activities[0].title %>
+            </h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <h5 class="card-title">Individual Activity</h5>
+                    <p class="card-text">
+                        <% if(!isIndividualActivityDone){ %>
+                            Pending activity</p>
+                            <a href="#" class="btn btn-primary" onclick=callActivity(0)>Check it out!</a>
+                        <% } else{ %>
+                            Activity completed!</p>
+                            <h4 style="text-align: center;">Grade: <strong><%= activities[0].individual_score %>%</strong></h4>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card h-100">
+                <div class="card-body p-4">
+                    <h5 class="card-title">Group Activity</h5>
+                    <p class="card-text">
+                        <% if(!isIndividualActivityDone){ %>
+                            You need to complete the individual activity to unlock the group activity!</p>
+                        <% } else if(!isGroupActivityAvailable){ %>
+                            All the individual activities of your group need to be completed to unlock the group activity!</p>
+                        <% } else if(!isGroupActivityDone){ %>
+                            Pending Activity</p>
+                            <a href="#" class="btn btn-primary" onclick=callActivity(1)>Check it out!</a>
+                        <% } else{ %>
+                            Activity completed!</p>
+                            <h4 style="text-align: center;">Grade: <strong><%= activities[0].group_score %>%</strong></h4>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card text-white bg-secondary text-justify content-item">
+        <div class="card-body">
+            <h5>Group Forum</h5>
+        </div>
+    </div>
+    <h5 class="content-description" style="padding-top: 1rem; padding-bottom: 2rem;">Feel free to put here all your thoughts and questions about the module!</h5>
+
+    <div style="padding-bottom: 1rem;">
+        <section>
+
+            <div class="card bg-light">
+                <div class="card-body">
+
+                    <!-- Comment form-->
+                    <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!" id="commentForm"></textarea></form>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-primary float-end" id="btnSubmitComment" style="margin-left: 1rem;" onclick=submitComment()>Submit</button>
+                            <button class="btn btn-primary float-end" id="btnRefreshComments" onclick=callActivities()>Refresh</button>
+                        </div>
+                    </div>
+
+                    <div style="padding-top: 2rem;">
+                        <% discussions.forEach(function (discussion) { %>
+                            <!-- Single comment-->
+                            <div class="d-flex mb-4">
+                                <div class="ms-3" style="text-align: justify;">
+                                    <div>
+                                        <strong><%= discussion.first_name %>
+                                            <%= discussion.last_name %>  </strong>
+                                        <%= discussion.created_date %>
+                                    </div>
+                                    <%= discussion.message %>
+                                </div>
+                            </div>
+                            <% }) %>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+</div>

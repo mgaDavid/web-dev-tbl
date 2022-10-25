@@ -1,0 +1,87 @@
+<!--Sign up modal-->
+<div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Create an account
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnRegisterClose" onclick=cleanUpModals()></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstNameRegister" name="firstNameRegister" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastNameRegister" name="lastNameRegister" />
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="phoneRegister" name="phoneRegister" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="emailRegister" name="emailRegister" placeholder="Email" />
+                    <p id="emailErrorLoginRegister"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" id="passwordRegister" name="passwordRegister" placeholder="Password" />
+                    <p id=passErrorSignup></p>
+                    <p id="statusRegister"></p>
+                </div>
+                <div class="modal-footer d-block">
+                    <p id='pLogin' class="float-start">
+                        Already have an account? <a href="#" onclick=callModalLogin()>Log in</a>
+                    </p>
+                    <button class="btn btn-primary float-end" id="btnSubmitRegister" onclick="validateSignUp()">
+                    Sign Up
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Login modal-->
+<div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Log in
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnLoginClose" onclick=cleanUpModals()></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="usernameLogin" name="usernameLogin" placeholder="Email" />
+                    <p id="emailErrorLogin"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" id="passwordLogin" name="passwordLogin" placeholder="Password" />
+                    <p id="passErrorLogin"></p>
+                    <p id="statusLogin"></p>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe" />
+                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                <div class="modal-footer d-block">
+                    <p id='pRegister' class="float-start">
+                        Don't have an account? <a href="#" onclick=callModalRegister()>Create an account</a>
+                    </p>
+                    <button class="btn btn-primary float-end" id="btnSubmitLogin" onclick="validateLogin()">
+                    Log In
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
